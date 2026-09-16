@@ -24,7 +24,7 @@ The work sits at the intersection of **flight controls**, **embedded systems**, 
 - Resistor: 10 kΩ (metal-film, ±5 %)
 - Capacitor: 470 µF electrolytic
 - Theoretical time constant:  
-  \[ \tau = RC = 4.7\,\text{s} \]
+- Theoretical time constant: $\tau = RC = 4.7\,\text{s}$
 
 Circuit schematic:
 
@@ -107,7 +107,25 @@ Live Simulink scope of the charging curve:
 | Theoretical τ                 | 4.7 s                  |
 | Experimental τ                | ≈ 5.16 s               |
 
-The small difference between theoretical and experimental time constants is expected and is caused by component tolerances and parasitic resistances.
+### Identified Transfer Function
+
+The System Identification Toolbox returned the following continuous-time transfer function:
+
+$$
+G(s) = \frac{Y(s)}{X(s)} = \frac{0.6338}{s + 0.1938}
+$$
+
+From this model we can extract:
+
+- Gain \( K = 0.6338 \)
+- Pole location \( p = -0.1938 \)
+- Time constant: $\tau = 1 / 0.1938 \approx 5.16\,\text{s}$
+
+The identified model matches the experimental data extremely well, achieving **99.08% fitness**.
+
+![Identified Model Validation – 99.08% Fitness](figures/blackbox_model.png)
+
+The plot above shows the comparison between the measured experimental response (validation data) and the response of the estimated transfer function (`sys`). The two curves overlap almost perfectly, confirming the high quality of the identified model. The small difference between theoretical and experimental time constants is expected and is caused by component tolerances and parasitic resistances.
 
 ---
 
