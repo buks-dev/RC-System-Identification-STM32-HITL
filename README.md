@@ -127,6 +127,19 @@ The identified model matches the experimental data extremely well, achieving **9
 
 The plot above shows the comparison between the measured experimental response (validation data) and the response of the estimated transfer function (`sys`). The two curves overlap almost perfectly, confirming the high quality of the identified model. The small difference between theoretical and experimental time constants is expected and is caused by component tolerances and parasitic resistances.
 
+### Model Comparison: Experimental vs First-Principles vs Identified Model
+
+The plot below shows the step response of:
+
+- **Yellow** → Experimental data (measured from the physical RC circuit)
+- **Blue** → First-principles theoretical model (τ = 4.7 s)
+- **Red** → Identified black-box model (τ ≈ 5.16 s)
+
+![Comparison of Experimental, First-Principles and Identified Model](figures/experimental_vs_theoretical_vs_blackbox_mode.png)
+
+**Observation:**  
+Both the first-principles model and the identified model closely follow the experimental response. The identified model (red) matches the measured data slightly better in the transient region, which is expected because it was estimated directly from the real hardware data (including component tolerances and parasitics).
+
 ---
 
 ## 7. Repository Structure
